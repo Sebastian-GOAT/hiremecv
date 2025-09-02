@@ -1,0 +1,10 @@
+import { type ReactElement } from 'react';
+
+export default function Preview({ component }: { component: ReactElement }) {
+
+    return (
+        <div className='w-[min(550px,_100%)] min-h-[calc(min(550px,_100%)_*_297_/_210)] bg-white text-black'>
+            {component}
+        </div>
+    );
+}
