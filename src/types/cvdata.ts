@@ -18,8 +18,39 @@ type Language = {
     level: LanguageLevel
 };
 
+type Contact = {
+    title: string;
+    link?: string;
+};
+
+type Education = {
+    title: string;
+    major: string;
+    degree: string;
+    startDate: Date;
+    endDate: Date;
+};
+
+type Expirience = {
+    title: string;
+    role: string;
+    startDate: Date;
+    endDate?: Date;
+};
+
+type Project = {
+    title: string;
+};
+
 export type CVData = {
     fullname: string;
+    position: string;
+    contact: Contact[];
+    education: Education[];
+    expirience: Expirience[];
     skills: Skill[];
+    projects: Project[];
     languages: Language[];
+    interests: string[];
+    summary: string;
 };

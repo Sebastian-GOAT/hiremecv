@@ -1,34 +1,16 @@
 import Nav from '@/components/nav/Nav';
 import EditorSidebar from '@/components/editor/Sidebar';
 import Preview from '@/components/editor/Preview';
-import { useEffect, useMemo, useState } from 'react';
-import defaultData from '@/lib/defaultData';
-import { type CVData } from '@/types/cvdata';
+import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import templates from '@/lib/templates';
+import useCVData from '@/hooks/useCVData';
 
 export default function DynamicTemplate() {
 
     const { id } = useParams();
-    const [data, setData] = useState<CVData>(defaultData);
+    const [data, setData] = useCVData();
     const Component = useMemo(() => templates.find(template => template.id === id)?.component, [id]);
-
-    // Load saved data
-    useEffect(() => {
-
-        const savedData = localStorage.getItem('cvdata');
-
-        if (savedData)
-            setData(JSON.parse(savedData));
-
-    }, []);
-
-    // Save data on change
-    useEffect(() => {
-
-        localStorage.setItem('cvdata', JSON.stringify(data));
-
-    }, [data]);
 
     return (
         <>

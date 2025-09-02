@@ -49,7 +49,7 @@
 }
 
 .light {
-    --bg: white;
+    --bg: hsl(0, 0%, 95%);
     --fg: black;
 
     --card-shadow: hsl(0, 0%, 80%);

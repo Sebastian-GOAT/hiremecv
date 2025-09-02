@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
 import { type CVData } from '@/types/cvdata';
 import defaultData from '@/lib/defaultData';
 
-export default function useCVData() {
+export default function useCVData(): [CVData, Dispatch<SetStateAction<CVData>>] {
 
     const [data, setData] = useState<CVData>(defaultData);
 
