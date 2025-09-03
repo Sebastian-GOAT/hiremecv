@@ -28,17 +28,31 @@ const defaultData: CVData = {
         }
     ],
     skills: [
-        { title: 'Coding', level: 'Proficient' }
+        { title: 'Consulting products with clients', level: 'Expert' },
+        { title: 'Coding', level: 'Proficient' },
+        { title: 'Microsoft Office', level: 'Beginner' },
+        { title: 'Databases', level: 'Advanced' },
+        { title: 'TypeScript', level: 'Master' }
     ],
     projects: [
-
+        {
+            title: 'Netflix clone',
+            description: `
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Eum quo quaerat dolores sequi non excepturi omnis ex
+                reprehenderit ratione.
+            `,
+            startDate: new Date()
+        }
     ],
     languages: [
         { title: 'Czech', level: 'C2' },
         { title: 'Engish', level: 'B2' }
     ],
     interests: [
-        
+        'Coding in my free time',
+        'Learning new things, even outside of programming',
+        'Meeting new people'
     ],
     summary: `
         Hi, I'm Peter, a full-stack web developer.

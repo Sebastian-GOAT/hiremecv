@@ -40,6 +40,9 @@ type Expirience = {
 
 type Project = {
     title: string;
+    description: string;
+    startDate: Date;
+    endDate?: Date;
 };
 
 export type CVData = {
