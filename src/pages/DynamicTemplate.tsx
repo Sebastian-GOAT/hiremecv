@@ -4,12 +4,10 @@ import Preview from '@/components/editor/Preview';
 import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import templates from '@/lib/templates';
-import useCVData from '@/hooks/useCVData';
 
 export default function DynamicTemplate() {
 
     const { id } = useParams();
-    const [data, setData] = useCVData();
     const Component = useMemo(() => templates.find(template => template.id === id)?.component, [id]);
 
     return (
@@ -19,9 +17,9 @@ export default function DynamicTemplate() {
                 {
                     Component ? (
                         <>
-                            <EditorSidebar setData={setData} />
+                            <EditorSidebar />
                             <main className='px-8 py-16 hidden md:flex flex-1 justify-center overflow-y-auto'>
-                                <Preview component={<Component data={data} />} />
+                                <Preview component={<Component />} />
                             </main>
                         </>
                     ) : (

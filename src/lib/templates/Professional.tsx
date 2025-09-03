@@ -1,4 +1,4 @@
-import { type CVData } from '@/types/cvdata';
+import useCVData from '@/hooks/useCVData';
 import {
     Brain,
     Briefcase,
@@ -10,7 +10,9 @@ import {
     Volleyball
 } from 'lucide-react';
 
-export default function Professional({ data }: { data: CVData }) {
+export default function Professional() {
+
+    const [data] = useCVData();
 
     function formatDate(date: string | undefined): string {
         if (!date) return 'Present';

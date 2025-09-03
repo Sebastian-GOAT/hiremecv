@@ -1,28 +1,6 @@
-import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
-import { type CVData } from '@/types/cvdata';
-import defaultData from '@/lib/defaultData';
+import { useContext } from 'react';
+import CVDataContext from '@/contexts/CVDataContext';
 
-export default function useCVData(): [CVData, Dispatch<SetStateAction<CVData>>] {
-
-    const [data, setData] = useState<CVData>(defaultData);
-
-    // Load
-    useEffect(() => {
-
-        const loadedData = localStorage.getItem('cvdata');
-        
-        if (loadedData)
-            setData(JSON.parse(loadedData));
-
-    }, []);
-
-    // Update
-    useEffect(() => {
-
-        localStorage.setItem('cvdata', JSON.stringify(data));
-
-    }, [data]);
-
-    return [data, setData];
-
+export default function useCVData() {
+    return useContext(CVDataContext);
 }
