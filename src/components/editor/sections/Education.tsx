@@ -1,6 +1,7 @@
+import { type MoveSection } from '@/types/movesection';
 import useCVData from '@/hooks/useCVData';
 
-import UpButton from '../UpButton';
+import UpButton from '../buttons/UpButton';
 import DownButton from '../buttons/DownButton';
 import HideButton from '../buttons/HideButton';
 import AddButton from '../buttons/AddButton';
@@ -15,7 +16,7 @@ import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import DatePicker from '../DatePicker';
 
-export default function Education() {
+export default function Education({ index, moveSection }: { index: number; moveSection: MoveSection; }) {
 
     const [data, setData] = useCVData();
 
@@ -119,8 +120,8 @@ export default function Education() {
                 </AccordionContent>
             </AccordionItem>
             <div className='flex gap-1'>
-                <UpButton disabled={true} />
-                <DownButton disabled={false} />
+                <UpButton onClick={() => moveSection(index, 'up')} />
+                <DownButton onClick={() => moveSection(index, 'down')} />
                 <HideButton />
             </div>
         </div>

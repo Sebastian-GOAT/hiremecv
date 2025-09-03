@@ -1,7 +1,9 @@
+import { type MoveSection } from '@/types/movesection';
+
 import { Input } from '@/components/ui/input';
 import useCVData from '@/hooks/useCVData';
 
-import UpButton from '../UpButton';
+import UpButton from '../buttons/UpButton';
 import DownButton from '../buttons/DownButton';
 import HideButton from '../buttons/HideButton';
 import AddButton from '../buttons/AddButton';
@@ -14,7 +16,7 @@ import {
 } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
 
-export default function Interests() {
+export default function Interests({ index, moveSection }: { index: number; moveSection: MoveSection; }) {
 
     const [data, setData] = useCVData();
 
@@ -73,8 +75,8 @@ export default function Interests() {
                 </AccordionContent>
             </AccordionItem>
             <div className='flex gap-1'>
-                <UpButton  disabled={false} />
-                <DownButton disabled={false} />
+                <UpButton onClick={() => moveSection(index, 'up')} />
+                <DownButton onClick={() => moveSection(index, 'down')} />
                 <HideButton />
             </div>
         </div>

@@ -1,7 +1,7 @@
 import { type Template } from '@/types/template';
 import Professional from './templates/professional/Professional';
 
-const templates: Template[] = Array(40).fill(
+const templates: Template[] = [
     {
         id: 'professional',
         title: 'Professional',
@@ -10,6 +10,6 @@ const templates: Template[] = Array(40).fill(
         href: '/template/professional',
         component: Professional
     }
-);
+];
 
 export default templates;

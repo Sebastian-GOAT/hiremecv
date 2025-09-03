@@ -1,3 +1,5 @@
+import { type MoveSection } from '@/types/movesection';
+
 import { Textarea } from '@/components/ui/textarea';
 import {
     AccordionContent,
@@ -6,11 +8,11 @@ import {
 } from '@/components/ui/accordion';
 import useCVData from '@/hooks/useCVData';
 
-import UpButton from '../UpButton';
+import UpButton from '../buttons/UpButton';
 import DownButton from '../buttons/DownButton';
 import HideButton from '../buttons/HideButton';
 
-export default function Summary() {
+export default function Summary({ index, moveSection }: { index: number; moveSection: MoveSection; }) {
 
     const [data, setData] = useCVData();
 
@@ -34,8 +36,8 @@ export default function Summary() {
                 </AccordionContent>
             </AccordionItem>
             <div className='flex gap-1'>
-                <UpButton  disabled={false} />
-                <DownButton disabled={true} />
+                <UpButton onClick={() => moveSection(index, 'up')} />
+                <DownButton onClick={() => moveSection(index, 'down')} />
                 <HideButton />
             </div>
         </div>

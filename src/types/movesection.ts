@@ -1,0 +1,1 @@
+export type MoveSection = (index: number, direction: 'up' | 'down') => void;
