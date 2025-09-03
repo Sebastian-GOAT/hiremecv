@@ -3,7 +3,7 @@ import useCVData from '@/hooks/useCVData';
 import UpButton from '../UpButton';
 import DownButton from '../buttons/DownButton';
 import HideButton from '../buttons/HideButton';
-import AddButton from './AddButton';
+import AddButton from '../buttons/AddButton';
 import DeleteButton from '../buttons/DeleteButton';
 
 import {

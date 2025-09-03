@@ -11,7 +11,7 @@ import {
 
 type Props = {
     title: string;
-    date: Date;
+    date: Date | undefined;
     setDate: (date: Date | undefined) => void;
 };
 
