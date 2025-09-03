@@ -37,11 +37,7 @@ const defaultData: CVData = {
     projects: [
         {
             title: 'Netflix clone',
-            description: `
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Eum quo quaerat dolores sequi non excepturi omnis ex
-                reprehenderit ratione.
-            `,
+            description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum quo quaerat dolores sequi non excepturi omnis ex reprehenderit ratione.',
             startDate: new Date()
         }
     ],
@@ -54,9 +50,7 @@ const defaultData: CVData = {
         'Learning new things, even outside of programming',
         'Meeting new people'
     ],
-    summary: `
-        Hi, I'm Peter, a full-stack web developer.
-    `
+    summary: 'Hi, I\'m Peter, a full-stack web developer.'
 };
 
 export default defaultData;

@@ -11,9 +11,7 @@ export default function Contact() {
     const [data, setData] = useCVData();
 
     function handleNameUpdate(e: React.ChangeEvent<HTMLInputElement>) {
-        const cloned = structuredClone(data);
-        cloned.fullname = e.target.value;
-        setData(cloned);
+        setData(prev => ({ ...prev, fullname: e.target.value }))
     }
 
     function handleProfessionUpdate(e: React.ChangeEvent<HTMLInputElement>) {
@@ -25,8 +23,9 @@ export default function Contact() {
     return (
         <AccordionItem value='contact' className='flex-1'>
             <AccordionTrigger className='cursor-pointer'>Info & Contact</AccordionTrigger>
-            <AccordionContent className='flex flex-col gap-4'>
-                
+            <AccordionContent className='flex flex-col gap-2'>
+
+                {/* Name, profession */} 
                 <Input
                     type='text'
                     placeholder='Full name'
@@ -39,6 +38,9 @@ export default function Contact() {
                     value={data.position}
                     onChange={handleProfessionUpdate}
                 />
+
+                {/* Links, contact */}
+                
 
             </AccordionContent>
         </AccordionItem>

@@ -200,7 +200,7 @@ export default function Professional() {
             </section>
 
             {/* Summary */}
-            <section className='px-8'>
+            <section className='px-8 pb-8'>
                 <h3 className='flex items-center gap-2 font-semibold'>
                     <IdCard size={18} />
                     Summary

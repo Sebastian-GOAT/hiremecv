@@ -1,5 +1,5 @@
 import { type Template } from '@/types/template';
-import Professional from './templates/Professional';
+import Professional from './templates/professional/Professional';
 
 const templates: Template[] = Array(40).fill(
     {
