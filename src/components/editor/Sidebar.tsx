@@ -1,8 +1,4 @@
-import { useState, type JSX } from 'react';
-
-import { type MoveSection } from '@/types/movesection';
-
-import DownloadButton from './buttons/DownloadButton';
+import PrintButton from './buttons/PrintButton';
 import ResetButton from './buttons/ResetButton';
 
 import Contact from './sections/Contact';
@@ -15,55 +11,65 @@ import Interests from './sections/Interests';
 import Summary from './sections/Summary';
 
 import { Accordion } from '@/components/ui/accordion';
-
-type Section = {
-    id: string;
-    Component: ({ index, moveSection }: { index: number; moveSection: MoveSection; }) => JSX.Element;
-};
+import useCVData from '@/hooks/useCVData';
 
 export default function EditorSidebar() {
 
-    const [sections, setSections] = useState<Section[]>([
-        { id: 'education', Component: Education },
-        { id: 'experience', Component: Expirience },
-        { id: 'skills', Component: Skills },
-        { id: 'projects', Component: Projects },
-        { id: 'languages', Component: Languages },
-        { id: 'interests', Component: Interests },
-        { id: 'summary', Component: Summary }
-    ]);
+    const sectionMap = {
+        education: { component: Education, hidden: false },
+        experience: { component: Expirience, hidden: false },
+        skills: { component: Skills, hidden: false },
+        projects: { component: Projects, hidden: false },
+        languages: { component: Languages, hidden: false },
+        interests: { component: Interests, hidden: false },
+        summary: { component: Summary, hidden: false },
+    };
+
+    const [data, setData] = useCVData();
 
     function moveSection(index: number, direction: 'up' | 'down'): void {
-        setSections(prev => {
-            const newSections = [...prev];
+        setData(prev => {
+            const newSections = [...prev.sections];
             const targetIndex = direction === 'up' ? index - 1 : index + 1;
 
-            // když jsme na začátku nebo konci, nic nedělej
+            // Return if we're at the start or end
             if (targetIndex < 0 || targetIndex >= newSections.length) return prev;
 
-            // swap
+            // Swap
             [newSections[index], newSections[targetIndex]] = [
                 newSections[targetIndex],
                 newSections[index]
             ];
 
-            return newSections;
+            return {
+                ...prev,
+                sections: newSections
+            };
         });
     }
 
     return (
         <aside className='px-8 w-full md:w-[350px] lg:w-[500px] h-fit overflow-y-auto md:h-full bg-[var(--sidebar)]'>
             <div className='py-4 flex justify-end gap-2'>
-                <DownloadButton />
+                <PrintButton />
                 <ResetButton />
             </div>
             <Accordion type='multiple'>
 
                 <Contact />
                 {
-                    sections.map((section, i) => <section.Component key={i} index={i} moveSection={moveSection} />)
-                }
+                    data.sections.map((section, i) => {
+                        const SectionComponent = sectionMap[section.section as keyof typeof sectionMap].component;
 
+                        return (
+                            <SectionComponent
+                                key={i}
+                                index={i}
+                                moveSection={moveSection}
+                            />
+                        );
+                    })
+                }
             </Accordion>
         </aside>
     );

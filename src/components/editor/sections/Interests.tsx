@@ -6,6 +6,7 @@ import useCVData from '@/hooks/useCVData';
 import UpButton from '../buttons/UpButton';
 import DownButton from '../buttons/DownButton';
 import HideButton from '../buttons/HideButton';
+import ShowButton from '../buttons/ShowButton';
 import AddButton from '../buttons/AddButton';
 import DeleteButton from '../buttons/DeleteButton';
 
@@ -45,6 +46,18 @@ export default function Interests({ index, moveSection }: { index: number; moveS
         }));
     }
 
+    function toggleSection() {
+        setData(prev => {
+            const newSections = prev.sections;
+            newSections[index].hidden = !newSections[index].hidden;
+
+            return {
+                ...prev,
+                sections: newSections
+            };
+        });
+    }
+
     return (
         <div className='flex items-center gap-4'>
             <AccordionItem value='interests' className='flex-1'>
@@ -77,7 +90,11 @@ export default function Interests({ index, moveSection }: { index: number; moveS
             <div className='flex gap-1'>
                 <UpButton onClick={() => moveSection(index, 'up')} />
                 <DownButton onClick={() => moveSection(index, 'down')} />
-                <HideButton />
+                {
+                    data.sections[index].hidden
+                        ? <HideButton onClick={toggleSection} />
+                        : <ShowButton onClick={toggleSection} />
+                }
             </div>
         </div>
     );

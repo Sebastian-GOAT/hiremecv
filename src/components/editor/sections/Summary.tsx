@@ -11,6 +11,7 @@ import useCVData from '@/hooks/useCVData';
 import UpButton from '../buttons/UpButton';
 import DownButton from '../buttons/DownButton';
 import HideButton from '../buttons/HideButton';
+import ShowButton from '../buttons/ShowButton';
 
 export default function Summary({ index, moveSection }: { index: number; moveSection: MoveSection; }) {
 
@@ -18,6 +19,18 @@ export default function Summary({ index, moveSection }: { index: number; moveSec
 
     function handleSummaryUpdate(e: React.ChangeEvent<HTMLTextAreaElement>) {
         setData(prev => ({ ...prev, summary: e.target.value }));
+    }
+
+    function toggleSection() {
+        setData(prev => {
+            const newSections = prev.sections;
+            newSections[index].hidden = !newSections[index].hidden;
+
+            return {
+                ...prev,
+                sections: newSections
+            };
+        });
     }
 
     return (
@@ -38,7 +51,11 @@ export default function Summary({ index, moveSection }: { index: number; moveSec
             <div className='flex gap-1'>
                 <UpButton onClick={() => moveSection(index, 'up')} />
                 <DownButton onClick={() => moveSection(index, 'down')} />
-                <HideButton />
+                {
+                    data.sections[index].hidden
+                        ? <HideButton onClick={toggleSection} />
+                        : <ShowButton onClick={toggleSection} />
+                }
             </div>
         </div>
     );

@@ -50,7 +50,16 @@ const defaultData: CVData = {
         'Learning new things, even outside of programming',
         'Meeting new people'
     ],
-    summary: 'Hi, I\'m Peter, a full-stack web developer.'
+    summary: 'Hi, I\'m Peter, a full-stack web developer.',
+    sections: [
+        { section: 'education', hidden: false },
+        { section: 'experience', hidden: false },
+        { section: 'skills', hidden: false },
+        { section: 'projects', hidden: false },
+        { section: 'languages', hidden: false },
+        { section: 'interests', hidden: false },
+        { section: 'summary', hidden: false }
+    ]
 };
 
 export default defaultData;

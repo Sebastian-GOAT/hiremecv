@@ -45,6 +45,11 @@ type Project = {
     endDate?: Date;
 };
 
+type Section = {
+    section: string;
+    hidden: boolean;
+};
+
 export type CVData = {
     fullname: string;
     position: string;
@@ -56,4 +61,5 @@ export type CVData = {
     languages: Language[];
     interests: string[];
     summary: string;
+    sections: Section[];
 };
