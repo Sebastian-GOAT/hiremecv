@@ -10,6 +10,8 @@ import Languages from './sections/Languages';
 import Interests from './sections/Interests';
 import Summary from './sections/Summary';
 
+import AnimateScroll from '../AnimateScroll';
+
 import { Accordion } from '@/components/ui/accordion';
 import useCVData from '@/hooks/useCVData';
 
@@ -62,11 +64,13 @@ export default function EditorSidebar() {
                         const SectionComponent = sectionMap[section.section as keyof typeof sectionMap].component;
 
                         return (
-                            <SectionComponent
-                                key={i}
-                                index={i}
-                                moveSection={moveSection}
-                            />
+                            <AnimateScroll delayMs={i * 100}>
+                                <SectionComponent
+                                    key={i}
+                                    index={i}
+                                    moveSection={moveSection}
+                                />
+                            </AnimateScroll>
                         );
                     })
                 }

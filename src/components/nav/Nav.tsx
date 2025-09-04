@@ -23,6 +23,10 @@ export default function Nav() {
             <NavMenu>
                 <NavMenuList className='hidden sm:flex md:gap-8'>
                     <NavLink
+                        title='Home'
+                        href='/'
+                    />
+                    <NavLink
                         title='About us'
                         href='/about'
                     />
